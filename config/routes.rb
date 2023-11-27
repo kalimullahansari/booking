@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :admins, only: [:create]
   resources :users, only: [:create]
   resources :reservations, only: [:create, :update]
+  put "/users/change-user-status/:id" , to: "admins#change_user_status"
 end
