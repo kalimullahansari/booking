@@ -12,7 +12,6 @@ class ApplicationController < ActionController::API
     end
 
     def create_user
-        # an already signed in user can not create a user TODO
         forbidden_response && return if logged_in?
         user = User.new(user_params)
         if(user.save)

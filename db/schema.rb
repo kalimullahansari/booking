@@ -11,12 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_11_26_232550) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "reservations", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.string "date", null: false
     t.string "time", null: false
-    t.integer "admin_id"
-    t.integer "regular_user_id", null: false
+    t.bigint "admin_id"
+    t.bigint "regular_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_reservations_on_admin_id"

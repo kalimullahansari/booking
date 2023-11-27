@@ -3,8 +3,7 @@ class SessionsController < ApplicationController
         # don't create session if user already logged in 
         forbidden_response && return if logged_in?
         # create session if email exits in db and password is correct
-        # if email is upper case code is not working :TODO
-        user  = User.find_by_email(params[:user][:email])&.authenticate(params[:user][:password])
+        user  = User.find_by_email(params[:user][:email].downcase)&.authenticate(params[:user][:password])
         if(user)
             log_in(user)
             render json:{success:true}
